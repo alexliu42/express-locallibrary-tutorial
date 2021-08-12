@@ -4,6 +4,8 @@ var Book = require('../models/book');
 var Author = require('../models/author');
 var Genre = require('../models/genre');
 var BookInstance = require('../models/bookinstance');
+var Publisher = require('../models/publisher');
+
 
 var async = require('async');
 
@@ -24,6 +26,9 @@ exports.index = function(req, res) {
         },
         genre_count: function(callback) {
             Genre.countDocuments({}, callback);
+        },
+        publisher_count: function(callback) {
+            Publisher.countDocuments({}, callback);
         }
     }, function(err, results) {
         res.render('index', { title: 'Local Library Home', error: err, data: results });

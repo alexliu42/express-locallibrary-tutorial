@@ -6,9 +6,13 @@ var book_controller = require('../controllers/bookController');
 var author_controller = require('../controllers/authorController');
 var genre_controller = require('../controllers/genreController');
 var book_instance_controller = require('../controllers/bookinstanceController');
+var publisher_controller = require('../controllers/publisherController');
+
+
+
+
 
 /// BOOK ROUTES ///
-
 // GET catalog home page.
 router.get('/', book_controller.index);
 
@@ -113,5 +117,20 @@ router.get('/bookinstance/:id', book_instance_controller.bookinstance_detail);
 
 // GET request for list of all BookInstance.
 router.get('/bookinstances', book_instance_controller.bookinstance_list);
+
+///Publisher routes///
+// GET request for one Publisher.
+router.get('/publisher/:id', publisher_controller.publisher_detail);
+
+// GET request for list of all Genre.
+router.get('/publishers', publisher_controller.publisher_list);
+
+
+// GET request for creating a Genre. NOTE This must come before route that displays Genre (uses id).
+router.get('/publisher/create', publisher_controller.publisher_create_get);
+
+//POST request for creating Genre.
+router.post('/publisher/create', publisher_controller.publisher_create_post);
+
 
 module.exports = router;
